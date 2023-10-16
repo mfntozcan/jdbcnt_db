@@ -61,7 +61,7 @@ public class ExecuteQuery01 {
 
     //ÖRNEK 4:Puanı bölümlerin taban puanlarının ortalamasından yüksek olan öğrencilerin isim ve puanlarını listeleyiniz.ÖDEVV
 
-
+        System.out.println("------------------ornek 4 -------------------------------");
 
 
 
