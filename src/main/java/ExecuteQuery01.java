@@ -59,9 +59,16 @@ public class ExecuteQuery01 {
 
         System.out.println("------------------ornek 4 -------------------------------");
 
-    //ÖRNEK 4:Puanı bölümlerin taban puanlarının ortalamasından yüksek olan öğrencilerin isim ve puanlarını listeleyiniz.ÖDEVV
+    //ÖRNEK 4:Puanı bölümlerin taban puanlarının ortalamasından yüksek olan öğrencilerin isim ve puanlarını listeleyiniz.
 
-        System.out.println("------------------ornek 4 -------------------------------");
+        String query4="SELECT isim,puan FROM ogrenciler WHERE puan>(SELECT AVG(taban_puani) FROM bolumler)";
+        ResultSet rs4=st.executeQuery(query4);
+
+        while (rs4.next()){
+            System.out.println(rs4.getString("isim")+"--"+rs4.getInt("puan"));
+        }
+
+        System.out.println("------------------ornek 5 -------------------------------");
 
 
 
