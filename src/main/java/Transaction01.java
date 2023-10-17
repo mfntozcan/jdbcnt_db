@@ -14,7 +14,7 @@ Bu islemlerin tamami basarili olursa degisiklikler COMMIT ile onaylayarak DB de 
 import java.sql.*;
 
 public class Transaction01 {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws Exception {
 
         //hesap no:1234 ten hesap no:5678 e 1000$ para transferi olsun.
 
@@ -23,18 +23,27 @@ public class Transaction01 {
 
         Statement st =con.createStatement();
 
-        String sql = "UPDATE hesaplar SET bakye=bakiye+? WHERE hesap_no=?";
+        String sql = "UPDATE hesaplar SET bakiye=bakiye+? WHERE hesap_no=?";
         PreparedStatement prst = con.prepareStatement(sql);
+
+        ///----------olmamasi gereken cozum--------------
 
         //1- para transferi yapan hesabin bakiyesini guncellenecek
         prst.setInt(1,-1000);
         prst.setInt(2,1234);
         prst.executeUpdate();
 
+        //Bu asamada sistemde hata olusursa
+        if (true){
+            throw new Exception();//burada uygulama duracak
+        }
+
         //2- para transferi alan hesabin bakiyesini guncellencek
         prst.setInt(1,1000);
         prst.setInt(2,5678);
         prst.executeUpdate();
+
+        //her iki islem ayri transactionlarda
 
 
 
